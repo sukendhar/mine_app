@@ -1,4 +1,8 @@
 <h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<%= form_tag importCsv_employees_path, :method => 'post', :multipart => true do %>
+    <p>
+      Select File:
+      <%= file_field_tag 'file' %>
+      <%= submit_tag 'Upload data', :name => nil %>
+    </p>
 <% end %>

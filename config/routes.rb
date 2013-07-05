@@ -1,8 +1,18 @@
 MineApp::Application.routes.draw do
+  resources :employees
+
+
   authenticated :user do
-    root :to => 'home#index'
+    root :to => "employees#index"
   end
-  root :to => "home#index"
+
+  resources :employees do
+    collection do
+      post "importCsv"
+    end
+  end
+
+
   devise_for :users
   resources :users
 end
